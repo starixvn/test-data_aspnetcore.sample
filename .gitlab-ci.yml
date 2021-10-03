@@ -1,0 +1,8 @@
+include:
+    - project: "ci/repos-ci/pentagon_sample_website1"
+      ref: master
+      file: "gitlab-ci.yml"
+
+    #- project: "ci/repos-ci/nexops_sample_website2"
+    #  ref: master
+    #  file: "gitlab-ci-mixing.yml"

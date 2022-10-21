@@ -4,6 +4,6 @@ include:
       file: "gitlab-ci.yml"
       
 
-#    - project: "ci/repos-ci/pentagon_l1_website2"
-#      ref: master
-#      file: "gitlab-ci-mixing.yml"
+    - project: "ci/repos-ci/pentagon_l1_website2"
+      ref: master
+      file: "gitlab-ci-mixing.yml"

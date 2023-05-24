@@ -1,5 +1,5 @@
 include:
   - project: ci/core-cicd
-    ref: main
+    ref: autodeploy
     file: luminet.gitlab-ci.yml
 

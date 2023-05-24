@@ -2,4 +2,3 @@ include:
   - project: ci/core-cicd
     ref: autodeploy
     file: luminet.gitlab-ci.yml
-

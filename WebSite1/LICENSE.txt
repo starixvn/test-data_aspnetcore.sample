@@ -2,7 +2,7 @@ MIT License
 
 Copyright (c) 2023 test-data
 
-Permission is hereby granted, free of , to any  obtaining a copy
+Permission is hereby gning a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell

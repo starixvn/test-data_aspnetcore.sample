@@ -1,4 +1,4 @@
 include:
   - project: ci/core-cicd
-    ref: main
+    ref: scprod
     file: luminet.gitlab-ci.yml

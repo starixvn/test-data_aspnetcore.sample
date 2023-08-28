@@ -22,4 +22,11 @@ WORKDIR /app
 COPY --from=builder /app .
 ENV TZ="America/La_Paz"
 
+# Don’t run as root
+RUN adduser --disabled-password \
+  --home /app \
+  --gecos '' dotnetuser && chown -R dotnetuser /app
+USER dotnetuser
+#
+
 ENTRYPOINT ["dotnet", "WebSite1.dll"]

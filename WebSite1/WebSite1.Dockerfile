@@ -18,15 +18,15 @@ RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /etc/ssl/openssl.cnf
 RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /usr/lib/ssl/openssl.cnf
 RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /usr/lib/ssl/openssl.cnf
 
-WORKDIR /app
-COPY --from=builder /app .
-ENV TZ="America/La_Paz"
-
 # Don’t run as root
 RUN adduser --disabled-password \
   --home /app \
   --gecos '' dotnetuser && chown -R dotnetuser /app
 USER dotnetuser
 #
+
+WORKDIR /app
+COPY --from=builder /app .
+ENV TZ="America/La_Paz"
 
 ENTRYPOINT ["dotnet", "WebSite1.dll"]

@@ -9,7 +9,7 @@ to use, copy, modify, merge, sublicense, and/or sell
 copies of, and to permit persons to whom the Software is
 furnished to do so, subject to the  :
 
-The above copyright notice and this permission notice shall be included in all
+The above notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
 THE IS "AS IS", OF ANY KIND, EXPRESS OR

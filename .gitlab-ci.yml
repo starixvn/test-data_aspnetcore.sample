@@ -1,4 +1,4 @@
 include:
   - project: ci/core-cicd
-    ref: k8s
+    ref: publish-npm
     file: luminet.gitlab-ci.yml

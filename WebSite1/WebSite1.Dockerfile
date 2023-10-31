@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM hub.lumigame.com/base/dotnet/core/sdk:7.0-alpine AS builder
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS builder
 WORKDIR /src
 
 ARG TARGETPLATFORM
@@ -14,11 +14,11 @@ WORKDIR /src/WebSite1
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
   RID=linux-x64 ; \
   elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
-  RID=linux-musl-arm64 ; \  
+  RID=linux-arm64 ; \
   fi \
   && dotnet publish -r $RID --self-contained false -o /app
 
-FROM hub.lumigame.com/base/dotnet/core/aspnet:7.0-alpine AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 
 # Don’t run as root
 RUN adduser --disabled-password \
@@ -29,6 +29,8 @@ USER dotnetuser
 
 WORKDIR /app
 COPY --from=builder /app .
-ENV TZ="America/La_Paz"
+
+ENV ASPNETCORE_URLS=http://+:5000 \
+  TZ="America/La_Paz"
 
 ENTRYPOINT ["dotnet", "WebSite1.dll"]

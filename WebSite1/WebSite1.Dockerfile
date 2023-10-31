@@ -1,5 +1,7 @@
-FROM hub.lumigame.com/base/dotnet/core/sdk:7.0 AS builder
+FROM --platform=$BUILDPLATFORM hub.lumigame.com/base/dotnet/core/sdk:7.0-alpine AS builder
 WORKDIR /src
+
+ARG TARGETPLATFORM
 
 COPY *.sln .
 COPY WebSite1/*.csproj ./WebSite1/
@@ -9,7 +11,12 @@ RUN dotnet restore -v n
 
 COPY WebSite1/. ./WebSite1/
 WORKDIR /src/WebSite1
-RUN dotnet publish -r linux-arm64 --self-contained false -o /app
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+  RID=linux-x64 ; \
+  elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
+  RID=linux-musl-arm64 ; \  
+  fi \
+  && dotnet publish -r $RID --self-contained false -o /app
 
 FROM hub.lumigame.com/base/dotnet/core/aspnet:7.0-alpine AS base
 

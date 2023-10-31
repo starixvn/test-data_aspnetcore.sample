@@ -1,22 +1,17 @@
-FROM hub.lumigame.com/base/dotnet/core/sdk:5.0.102-ca-patch-buster-slim AS builder
+FROM hub.lumigame.com/base/dotnet/core/sdk:7.0 AS builder
 WORKDIR /src
 
 COPY *.sln .
 COPY WebSite1/*.csproj ./WebSite1/
-COPY WebSite2/*.csproj ./WebSite2/
-RUN dotnet nuget add source http://nuget.nexdev.net/api/v2
+
+RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
 RUN dotnet restore -v n
 
 COPY WebSite1/. ./WebSite1/
 WORKDIR /src/WebSite1
 RUN dotnet publish -r linux-arm64 --self-contained false -o /app
 
-FROM hub.lumigame.com/base/dotnet/core/aspnet:5.0-buster-slim AS base
-
-RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /etc/ssl/openssl.cnf
-RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /etc/ssl/openssl.cnf
-RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /usr/lib/ssl/openssl.cnf
-RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /usr/lib/ssl/openssl.cnf
+FROM hub.lumigame.com/base/dotnet/core/aspnet:7.0-alpine AS base
 
 # Don’t run as root
 RUN adduser --disabled-password \

@@ -9,7 +9,7 @@ RUN dotnet restore -v n
 
 COPY WebSite1/. ./WebSite1/
 WORKDIR /src/WebSite1
-RUN dotnet publish -r linux-arm64 --self-contained false -o /app
+RUN dotnet publish -r linux-x64 --self-contained false -o /app
 
 FROM hub.lumigame.com/base/dotnet/core/aspnet:7.0-alpine AS base
 

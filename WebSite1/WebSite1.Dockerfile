@@ -1,4 +1,4 @@
-FROM hub.lumigame.com/base/dotnet/core/sdk:7.0 AS builder
+FROM hub.lumigame.com/base/dotnet/core/sdk:7.0-alpine AS builder
 WORKDIR /src
 
 COPY *.sln .

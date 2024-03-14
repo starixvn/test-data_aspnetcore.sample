@@ -1,4 +1,4 @@
 include:
   - project: ci/core-cicd
-    ref: dev
+    ref: runner_k8s
     file: luminet.gitlab-ci.yml

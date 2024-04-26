@@ -22,6 +22,7 @@ USER dotnetuser
 
 WORKDIR /app
 COPY --from=builder /app .
-ENV TZ="America/La_Paz"
+ENV TZ="America/La_Paz" \
+  ASPNETCORE_URLS=http://+:5000
 
 ENTRYPOINT ["dotnet", "WebSite1.dll"]

@@ -1,4 +1,4 @@
 include:
   - project: ci/core-cicd
-    ref: trivy-k8s
+    ref: main
     file: luminet.gitlab-ci.yml

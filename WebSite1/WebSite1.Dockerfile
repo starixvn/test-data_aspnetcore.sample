@@ -1,4 +1,15 @@
 FROM hub.lumigame.com/base/dotnet/core/sdk:7.0-alpine AS builder
+
+RUN curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+  --create-dirs \
+  -o $HOME/minio-binaries/mc \
+  && chmod +x $HOME/minio-binaries/mc
+
+ENV PATH="$PATH:$HOME/minio-binaries/"
+
+RUN mc alias set myminio https://minio-api.nexdev.net gitlab-ci H5nF5ywy262wt881ZWpq \
+  && mc admin info myminio
+
 WORKDIR /src
 
 COPY *.sln .
@@ -6,20 +17,8 @@ COPY WebSite1/*.csproj ./WebSite1/
 
 RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
 
-ENV SRC_PACKAGES=/src/packages
-
-RUN mkdir -p $SRC_PACKAGES
-
-RUN ls $SRC_PACKAGES/ \
-  && cp -arf $SRC_PACKAGES/. /root/.nuget/packages/ \
-  && ls -a /root/.nuget/packages/
-
 RUN --mount=type=cache,target=/root/.nuget/packages \
-  ls -a /root/.nuget/packages/ \
-  && dotnet restore -v n -r linux-x64 ./WebSite1/WebSite1.csproj \
-  && rm -rf SRC_PACKAGES/* \  
-  && cp -arf /root/.nuget/packages/. $SRC_PACKAGES/ \
-  && ls $SRC_PACKAGES/
+  dotnet restore -v n -r linux-x64 ./WebSite1/WebSite1.csproj
 
 COPY WebSite1/. ./WebSite1/
 WORKDIR /src/WebSite1

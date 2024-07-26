@@ -5,7 +5,16 @@ COPY *.sln .
 COPY WebSite1/*.csproj ./WebSite1/
 
 RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
-RUN --mount=type=cache,target=/root/.nuget/packages dotnet restore -v n -r linux-x64
+
+ENV SRC_PACKAGES=/src/packages
+
+RUN mkdir -p $SRC_PACKAGES
+
+RUN --mount=type=cache,target=/root/.nuget/packages \
+  cp -arf $SRC_PACKAGES/. /root/.nuget/packages/ \
+  && dotnet restore -v n -r linux-x64 ./WebSite1/WebSite1.csproj \
+  && rm -rf SRC_PACKAGES/* \
+  && cp -arf /root/.nuget/packages/. $SRC_PACKAGES/
 
 COPY WebSite1/. ./WebSite1/
 WORKDIR /src/WebSite1

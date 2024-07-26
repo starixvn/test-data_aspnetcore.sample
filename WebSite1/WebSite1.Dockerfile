@@ -5,11 +5,11 @@ COPY *.sln .
 COPY WebSite1/*.csproj ./WebSite1/
 
 RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
-RUN dotnet restore -v n
+RUN --mount=type=cache,target=/root/.nuget/packages dotnet restore -v n -r linux-x64
 
 COPY WebSite1/. ./WebSite1/
 WORKDIR /src/WebSite1
-RUN dotnet publish -r linux-x64 --self-contained false -o /app
+RUN --mount=type=cache,target=/root/.nuget/packages dotnet publish -r linux-x64 --self-contained false -o /app
 
 FROM hub.lumigame.com/base/dotnet/core/aspnet:7.0-alpine AS base
 

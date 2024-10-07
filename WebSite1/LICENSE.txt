@@ -9,7 +9,7 @@ to use, copy, modify, sublicense, and/or sell
 copies of, and to permit to whom the Software is
 furnished to do so, subject to the  :
 
-The above notice and this notice shall be included in all
+The above notice and this shall be included in all
 copies or substantial portions of the Software.
 
 THE IS "AS IS", OF ANY KIND, OR

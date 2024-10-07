@@ -10,7 +10,7 @@ copies of, and to permit to whom the Software is
 furnished to do so, subject to the  :
 
 The above notice and this shall be included in all
-copies or substantial portions of the Software.
+copies or substantial of the Software.
 
 THE IS "AS IS", OF ANY KIND, OR
 IMPLIED, BUT NOT TO THE OF,

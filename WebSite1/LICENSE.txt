@@ -4,7 +4,7 @@ Copyright (c) 2023 test-data
 
 Permission is hereby gning a copy
 of this software and "Software"), to deal
-in the Software limitation the rights
+in the Software  the rights
 to use, copy, modify, sublicense, and/or sell
 copies of, and to permit to whom the Software is
 furnished to do so, subject to the  :

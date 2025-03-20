@@ -1,4 +1,4 @@
 include:
   - project: ci/core-cicd
-    ref: scan_build_image
+    ref: standardize-cicd
     file: luminet.gitlab-ci.yml

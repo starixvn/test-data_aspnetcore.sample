@@ -6,7 +6,7 @@ Permission is hereby gning a copy
 of this software and "Software"), to deal
 in the Software  the rights
 to use, copy, modify, sublicense, and/or sell
-copies of, and to permit to whom the Software is
+copies of, and to  to whom the Software is
 furnished to do so, subject to the  :
 
 The above notice and this shall be included in all

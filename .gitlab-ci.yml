@@ -1,4 +1,4 @@
 include:
   - project: ci/core-cicd
-    ref: main
+    ref: department_value
     file: luminet.gitlab-ci.yml

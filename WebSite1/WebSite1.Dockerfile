@@ -1,4 +1,4 @@
-FROM hub.lumigame.com/base/dotnet/core/sdk:5.0.102-ca-patch-buster-slim AS builder
+FROM hub.lumigame.com/base/dotnet/core/sdk:8.0-alpine-25h2 AS builder
 WORKDIR /src
 
 COPY *.sln .
@@ -11,7 +11,7 @@ COPY WebSite1/. ./WebSite1/
 WORKDIR /src/WebSite1
 RUN dotnet publish -r linux-x64 --self-contained false -o /app
 
-FROM hub.lumigame.com/base/dotnet/core/aspnet:5.0-slim-24h1.1 AS base
+FROM hub.lumigame.com/base/dotnet/core/aspnet:8.0-alpine-25h2 AS base
 
 # Don’t run as root
 RUN adduser --disabled-password \

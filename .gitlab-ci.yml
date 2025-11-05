@@ -1,4 +1,4 @@
 include:
   - project: ci/core-cicd
-    ref: enhance_argocd
+    ref: avoid_redundant_builds
     file: luminet.gitlab-ci.yml

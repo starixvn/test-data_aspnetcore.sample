@@ -1,5 +1,5 @@
 reviews:
   path_filters:
-    - 'src/consumers/'
+    - '!src/consumers/'
     # - '!configs/'
     # - '!lightning-data/batches/'

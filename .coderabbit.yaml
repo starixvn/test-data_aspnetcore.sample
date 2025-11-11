@@ -1,3 +1,10 @@
 reviews:
   path_filters:
-    - 'src/consumers/**'
+    - '!lightning-data/**'
+    - '!src/statistic-lightning/**'
+    - '!tests/**'          # Exclude tests temporarily
+    - '!configs/**'        # Exclude configs temporarily
+    - '!yarn.lock'
+    - '!package-lock.json'
+    - '!**/*.zip'
+    - '!**/*.lock'

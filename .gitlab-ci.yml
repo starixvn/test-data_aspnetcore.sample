@@ -1,18 +1,4 @@
-variables:
-  SMOKE_PRODUCT_NAME: 145
-  ENABLE_NODEJS_INTEGRATION_TEST: 'true'
-  NODEJS_INTEGRATION_TEST_IMAGE_VERSION: $DOCKER_REG_LOCAL_URL/base/node:20-alpine-25h2
-  NODEJS_INTEGRATION_TEST_DB_IMAGE_VERSION: $DOCKER_REG_LOCAL_URL/docker-hub/library/mongo:4.4.8
-  NODEJS_IMAGE: "$DOCKER_REG_LOCAL_URL/base/node:20-alpine-25h2"
-
 include:
   - project: ci/core-cicd
     ref: main
     file: luminet.gitlab-ci.yml
-
-integration_test_js:
-  before_script:
-  - cp ./src/app-configs.IGT.ts ./src/app-configs.IGT.original.ts
-  - cp ./configs/app-configs.IGT.ts ./src/app-configs.IGT.ts
-  - npm set registry $NPM_LUMI_HOST
-  - yarn install

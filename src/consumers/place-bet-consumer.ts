@@ -116,5 +116,7 @@ export default class PlaceBetConsumer extends BasePlaceBetConsumer {
                 hasBet: true,
             };
         }
+
+        console.log("consume", payload);
     }
 }

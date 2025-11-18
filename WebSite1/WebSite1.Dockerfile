@@ -23,4 +23,7 @@ WORKDIR /app
 COPY --from=builder /app .
 ENV TZ="America/La_Paz"
 
+EXPOSE 5000
+EXPOSE 5001
+
 ENTRYPOINT ["dotnet", "WebSite1.dll"]

@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: website1
+  description: "Website1"
+  tags:
+    - website1
+  annotations:
+    gitlab.com/instance: git3.nexdev.net
+    gitlab.com/project-id: '498'
+    gitlab.com/project-slug: 'test-data/aspnetcore.sample'
+spec:
+  type: website
+  lifecycle: experimental
+  owner: NexPE
+  system: Sample

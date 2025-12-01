@@ -1,4 +1,4 @@
 include:
   - project: ci/core-cicd
-    ref: auto-create-mr
+    ref: main
     file: luminet.gitlab-ci.yml
